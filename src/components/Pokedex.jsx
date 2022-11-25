@@ -3,7 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import CharacterItem from './CharacterItem';
-
+import { Paginator } from "primereact/paginator";
+import "primeicons/primeicons.css";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.css";
+import "primeflex/primeflex.css";
 
 const Pokedex = () => {
 
@@ -14,9 +18,9 @@ const Pokedex = () => {
     const [loading, setLoading] = useState(true);
 
         /* --Paginator-- */
-
+        
         const [page, setPage] = useState(1);
-        const pokemonPerPage = 12;
+        const [pokemonPerPage, setPokemonPerPage]  = useState(12)
         const lastIndex = page * pokemonPerPage;
         const firstIndex = lastIndex - pokemonPerPage;
         const pokemonPaginated =  pokeCharacters.slice(firstIndex, lastIndex)
@@ -26,13 +30,18 @@ const Pokedex = () => {
         for(let i= 1; i<= totalPage; i++){
         numbers.push(i)
         }
+
+        const onBasicPageChange = (event) => {
+            setPokemonPerPage(event.rows);
+            console.log(event);
+          };
     
         /*------------------ */
 
     const navigate = useNavigate()
 
     useEffect(()=> {
-        axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154')
+        axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1154`)
             .then((res) => {
                 setLoading(false);
                 setPokeCharacters(res.data.results)
@@ -83,14 +92,9 @@ const Pokedex = () => {
                             onChange={(e) => setPokemonName(e.target.value)}
                             placeholder='Busca tú pokemon aquí'
                         />
-                        {
-                            pokemonName === "" ? (
-                                <button disabled><i className="fa-solid fa-magnifying-glass"></i></button>
-
-                            ) : (
-                                <button onClick={btnPokemonPerName}><i className="fa-solid fa-magnifying-glass"></i></button>
-                            )
-                        }
+                      
+                                <button onClick={btnPokemonPerName} disabled={!pokemonName}><i className="fa-solid fa-magnifying-glass"></i></button>
+                    
                     </div>
                     <select onChange={filterPokeType} >                   
                         {pokemonType.map(type => (
@@ -114,6 +118,14 @@ const Pokedex = () => {
                     ))}
                     <button className='btn next-page' onClick={() => setPage(page+1)} disabled={page >= totalPage}>Next Page</button>
                 </div>
+
+                <Paginator
+                 first={pokemonPerPage}
+                 rows={lastIndex}
+                 totalRecords={pokeCharacters.length}
+                 rowsPerPageOptions={[12, 24, 36]}
+                 onPageChange={onBasicPageChange}
+                ></Paginator>
             </div>
         </div>
                     )}  

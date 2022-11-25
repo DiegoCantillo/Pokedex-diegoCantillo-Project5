@@ -3,11 +3,11 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 const ProtectedRoutes = () => {
 
-    const PokeNames = useSelector(state => state.PokeName)
+    const pokeNames = useSelector(state => state.pokeName)
+    console.log(pokeNames);
 		// Aquí va la condición. Puede ser una condición de cualquier tipo. Lo que 
 		// Importa es que valide si el usuario está loggeado o no
-    //if(PokeNames){
-    if(true){
+    if(pokeNames){
         return <Outlet />
     } else { 
         return <Navigate to='/' />
