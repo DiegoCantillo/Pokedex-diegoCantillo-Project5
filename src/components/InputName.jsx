@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { changeName } from '../store/slice/pokeName.slice';
 import fondopoke from '../assets/pokeFondo1.webp'
 
+
 const InputName = () => {
 
     const [inputName, setInputName] = useState("");
