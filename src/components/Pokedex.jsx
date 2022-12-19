@@ -27,7 +27,7 @@ const Pokedex = () => {
         const totalPage = Math.ceil(pokeCharacters.length / pokemonPerPage)
 
         const onBasicPageChange = (event) => {
-            setPokemonPerPage(event.rows);
+            setPokemonPerPage(event.first);
             console.log(event);
           };
     
