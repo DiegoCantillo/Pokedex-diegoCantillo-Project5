@@ -118,7 +118,7 @@ const Pokedex = () => {
             <Paginator
               first={1}
               rows={pokemonPerPage}
-              totalRecords={1000}
+              totalRecords={500}
               rowsPerPageOptions={[12, 24, 36]}
               onPageChange={onBasicPageChange}
             ></Paginator>
