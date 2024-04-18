@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
+import { colorByType } from '../utils/colorType';
 
 const PokedexDetail = () => {
 
@@ -18,6 +19,9 @@ const PokedexDetail = () => {
                 setPokeCharacter(res.data)})
             .catch(error => setStatus(error.response.status))
     }, [])
+
+    
+    
 
     const navigate = useNavigate()
 
@@ -39,8 +43,8 @@ const PokedexDetail = () => {
             </>
         )
     }
-
-    console.log(pokeCharacter)
+    const type = pokeCharacter.types?.[0]?.type.name;
+    const cardColor = colorByType(type)
 
     return (
         <>
@@ -50,7 +54,7 @@ const PokedexDetail = () => {
                 <div className="wobbling-10"></div>
             </div>
         ) : (
-        <div className='poke-per-id'>
+        <div className='poke-per-id' style={{background: cardColor}}>
             <div className="btn-previus">
                 <i className="fa-solid fa-circle-left" onClick={()=> navigate('/pokedex')}></i>
             </div>
@@ -73,8 +77,8 @@ const PokedexDetail = () => {
                         <section className='types'>
                             <h2>Types</h2>
                             <div className="duo-types">
-                                <div className='type1'><p>{pokeCharacter.types?.[0]?.type.name}</p></div>
-                                <div className='type2'><p>{pokeCharacter.types?.[1]?.type.name}</p></div>
+                                <div className='type1' style={{background: cardColor}}><p>{pokeCharacter.types?.[0]?.type.name}</p></div>
+                                <div className='type2' style={{background: cardColor}}><p>{pokeCharacter.types?.[1]?.type.name}</p></div>
                             </div>
                         </section>
                         <section className='abilities'>

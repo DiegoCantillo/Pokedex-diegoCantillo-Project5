@@ -5,6 +5,54 @@ body{
     overflow-x: hidden;
 }
 
+.containerDark{
+    height: 25px;
+    position: fixed;
+    bottom: 116px;
+    right: 30px;
+    z-index: 8;
+}
+
+.modeDark {
+    height: 45px;
+    width: auto;
+    padding: 5px 10px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    border: solid rgb(185, 167, 167);
+    z-index: 8;
+    cursor: pointer;
+    background-color: #000;
+    color: white;
+}
+
+.modeDark .iconsMode {
+    transform: rotateY(0deg); /* Inicialmente sin rotación */
+    transition: opacity 0.5s ease 0.5s, transform 1s ease 0.5s; /* Transición de opacidad y transform con un retraso de 0.5 segundos */
+}
+
+.modeDark:hover .iconsMode {
+    transform: rotateY(720deg); /* Rotar 720 grados (dos vueltas completas) */
+}
+
+
+.modeDark input{
+    display: none;
+}
+.modeDark .sun{
+    color: yellow;
+    font-size: 25px;
+}
+.modeDark .moon{
+    font-size: 25px;
+}
+
+.sun, .moon {
+    transition: transform 1s ease;
+  }
+
 .welcome-page{
 width: 100%;
 height: 100vh;
@@ -15,20 +63,9 @@ align-items: center;
 }
 
 
-.welcome-page::before{
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.407);
-}
-
  .welcome-page img{
     width: 100%;
     height: 100vh;
-    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
@@ -38,25 +75,17 @@ align-items: center;
 
 .welcome-page .login-page{
     width: 50%;
-    margin: auto;
-    background-color: rgba(127, 255, 212, 0.201);
+    position: absolute;
+    bottom: 150px;
+    background-color: rgba(62, 128, 251, 0.653);
     border-radius: 10px;
     text-align: center;
     backdrop-filter: blur(10px);
     padding: 25px 10px;
 }
 
-@media(max-width: 750px) {
-    .welcome-page .login-page{
-        width: 75%;
-    }
-}
 
-@media(max-width: 500px) {
-    .welcome-page .login-page{
-        width: 85%;
-    }
-}
+
 
 .welcome-page .login-page h1{
     margin-top: 30px;
@@ -66,13 +95,34 @@ align-items: center;
     padding: 4px;
 }
 
-@media(max-width: 500px){
+@media(max-width: 1169px) {
+    .welcome-page .login-page{
+        width: 100%;
+    }
     .welcome-page .login-page h1{
-        font-size: 25px;
+        font-size: 20px;
+    }
+    .welcome-page .login-page .container-input_button{
+        width: 90%;
+        margin: auto;
+    }  
+}
+
+@media(max-width: 500px) {
+    .welcome-page .login-page{
+        width: 100%;
+    }
+    .welcome-page .login-page h1{
+        font-size: 15px;
     }
 }
 
-.welcome-page .login-page input{
+.welcome-page .login-page .container-input_button{
+    display: flex;
+    justify-content: center;
+}
+
+.welcome-page .login-page .container-input_button input{
     width: 60%;
     height: 42px;
     border-radius: 8px 0 0 8px;
@@ -80,16 +130,20 @@ align-items: center;
     text-align: center;
 }
 
-@media(max-width:500px){
-    .welcome-page .login-page input{
-        width: 75%;
-    }
-
+.welcome-page .login-page .container-input_button input:focus {
+    outline: none;
 }
 
-.welcome-page .login-page button{
-     width: fit-content;
-     height: 62px;
+@media(max-width:500px){
+    .welcome-page .login-page .container-input_button input{
+        width: 75%;
+    }
+}
+
+
+.welcome-page .login-page .container-input_button button{
+     width: 115px;
+     height: 42px;
      background-color: #2557a9;
      color: yellow;
      font-weight: 700;
@@ -98,6 +152,10 @@ align-items: center;
      font-size: 18px;
      cursor: pointer;
      padding: 0 15px;
+}
+.welcome-page .login-page .container-input_button button:hover{
+    background-color: yellow;
+     color: #2557a9;
 }
 
 /************************************ROUTE POKEDEX*****************************************/
@@ -116,11 +174,12 @@ align-items: center;
     padding: 10px;
     background-color: rgb(143, 232, 11);
     position: absolute;
-    top: 20px;
+    top: 10px;
     right: 20px;
     border-radius: 8px;
     cursor: pointer;
 }
+
 
 .container-pokedex .leave:hover{
     background-color:rgb(113, 183, 7);
@@ -129,6 +188,11 @@ align-items: center;
 .container-pokedex .leave i{
     font-size: 35px;
     color: white;
+}
+@media(max-width: 750px){
+    .container-pokedex .leave i{
+        font-size: 20px;
+    }
 }
 
 @keyframes rotation{
@@ -176,13 +240,16 @@ align-items: center;
     font-weight: 900;
     color: #ff1c1c;
     font-size: 38px;
-    -webkit-text-stroke: black 3px
+    -webkit-text-stroke: black 3px;
+    text-shadow: -1px 2px 15px rgba(255,255,255,0.73);
 }
 
 .container-pokedex .characters-pokedex p{
     margin: 8px;
     font-size: 20px;
     text-align: center;
+    box-shadow: #f4eded;
+    text-shadow: -1px 2px 15px rgba(255,255,255,0.73);
 }
 
 .container-pokedex .characters-pokedex form{
@@ -221,10 +288,13 @@ align-items: center;
     border-radius: 12px 0 0 12px;
     text-align: center;
 }
+.container-pokedex .characters-pokedex form .search-poke input:focus{
+    outline: none;
+}
 
 .container-pokedex .characters-pokedex form .search-poke button{
     width: 7%;
-    height: 44px;
+    height: 42px;
     border: none;
     background-color:  white;
     border-radius: 0 12px 12px 0;
@@ -256,14 +326,19 @@ align-items: center;
 
 
 
-.container-pokedex .characters-pokedex .poke-card li {
+.container-pokedex .characters-pokedex .poke-card .card {
     text-align: center;
     border: 1px solid black;
     width: 300px;
     height: 380px;
     border-radius: 10px;
     list-style: none;
-    background-color:  #a5c0eb;
+    
+}
+
+.link{
+    text-decoration: none;
+    color: #2557a9;
 }
 
 .container-pokedex .characters-pokedex .poke-card  img{
@@ -359,8 +434,9 @@ align-items: center;
 }
 
 .poke-per-id .set-contain-movements .main-features{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.871);
     padding-bottom: 20px;
+    backdrop-filter: blur(8px);
 }
 
 .poke-per-id .set-contain-movements .main-features .content-img img{
@@ -456,7 +532,8 @@ align-items: center;
 
 .poke-per-id .set-contain-movements .contain-characters-pokedetail .types, .abilities{
     width: 100%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.871);
+    backdrop-filter: blur(8px);
     padding: 10px;
 }
 
@@ -524,7 +601,8 @@ align-items: center;
 }
 
 .poke-per-id .set-contain-movements .contain-characters-pokedetail .stats-bases{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.871);
+    backdrop-filter: blur(8px);
     padding: 20px;
     margin-top: 12px;
 }
@@ -537,7 +615,8 @@ align-items: center;
 
 .poke-per-id .set-contain-movements .movements{
     width: 25%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.871);
+    backdrop-filter: blur(8px);
     margin-bottom: 10px;
     padding-bottom: 10px;
 }
@@ -772,4 +851,38 @@ align-items: center;
    30%,70% {transform:rotate(0deg)}
    49.99%  {transform:rotate(0.2deg)}
    50%     {transform:rotate(-0.2deg)}
+  }
+
+
+  .p-paginator{
+    width: 80% !important;
+    margin-top: 60px !important;
+    margin-bottom: 25px !important;
+    margin: auto;
+  }
+
+  @media(max-width: 926px) {
+    .p-paginator{
+        margin: auto;
+        width: 70%;
+      }
+      .p-paginator .p-paginator-pages .p-paginator-page{
+        min-width: 20px !important;
+        height: 20px !important;
+        margin: 5px !important;
+    }
+    
+    .p-dropdown .p-dropdown-trigger{
+        width: 2rem !important;
+    }
+    .p-paginator .p-paginator-first, .p-paginator .p-paginator-prev, .p-paginator .p-paginator-next, .p-paginator .p-paginator-last{
+        min-width: 1rem !important;
+        height: 1rem !important;
+    }
+  }
+
+  @media(max-width: 537px) {
+    .p-paginator{
+        width: 346px !important;
+    }
   }

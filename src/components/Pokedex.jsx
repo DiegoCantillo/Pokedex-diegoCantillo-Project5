@@ -16,6 +16,8 @@ const Pokedex = () => {
   const [pokemonType, setPokemonType] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  console.log(pokeCharacters);
+
   /* --Paginator-- */
 
   const [page, setPage] = useState(1);
@@ -106,9 +108,9 @@ const Pokedex = () => {
                 ))}
               </select>
             </form>
-            <ul className="poke-card">
+            <ul className="poke-card" >
               {pokeCharacters?.map((pokemon) => (
-                <li key={pokemon.url ? pokemon.url : pokemon.pokemon.url}>
+                <li key={pokemon.url ? pokemon.url : pokemon.pokemon.url} >
                   <CharacterItem
                     url={pokemon.url ? pokemon.url : pokemon.pokemon.url}
                   />
