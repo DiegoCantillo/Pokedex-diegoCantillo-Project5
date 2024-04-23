@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { colorByType } from '../utils/colorType';
+import pokeaudioMp3 from '../assets/sound/pokeAudio.mp3'
 
 const PokedexDetail = () => {
 
@@ -16,7 +17,10 @@ const PokedexDetail = () => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
             .then((res) => {
                 setLoading(false);
-                setPokeCharacter(res.data)})
+                setPokeCharacter(res.data)
+                const pokeAudio = new Audio(pokeaudioMp3)
+                pokeAudio.play()
+            })
             .catch(error => setStatus(error.response.status))
     }, [])
 

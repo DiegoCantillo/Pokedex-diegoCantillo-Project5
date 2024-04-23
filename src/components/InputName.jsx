@@ -29,7 +29,7 @@ const InputName = () => {
                             onChange={(e)=> setInputName(e.target.value)}
                             placeholder='Escribe tú nombre Aquí'
                     />
-                    <button onClick={searchName}>Listo 🔎</button>
+                    <button onClick={searchName} disabled={inputName.length === 0? true: false} >Listo 🔎</button>
                     </div>
             </section>
         </div>

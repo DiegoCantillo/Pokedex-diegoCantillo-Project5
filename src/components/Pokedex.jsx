@@ -9,6 +9,7 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
 
+
 const Pokedex = () => {
   const pokeName = useSelector((state) => state.pokeName);
   const [pokeCharacters, setPokeCharacters] = useState([]);
@@ -33,6 +34,7 @@ const Pokedex = () => {
   };
 
   /*------------------ */
+
 
   const navigate = useNavigate();
 

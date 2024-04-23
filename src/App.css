@@ -333,7 +333,10 @@ align-items: center;
     height: 380px;
     border-radius: 10px;
     list-style: none;
-    
+}
+
+.container-pokedex .characters-pokedex .poke-card .card:hover{
+    transform: translateY(-3px);
 }
 
 .link{
