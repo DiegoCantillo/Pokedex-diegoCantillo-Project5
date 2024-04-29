@@ -253,7 +253,7 @@ align-items: center;
 }
 
 .container-pokedex .characters-pokedex form{
-    width: 50%;
+    width: 60%;
     height: 250px;
     display: flex;
     flex-direction: column;
@@ -265,9 +265,11 @@ align-items: center;
     margin-top: 30px;
 }
 
+
+
 @media(max-width: 750px){
     .container-pokedex .characters-pokedex form{
-        width: 75%;
+        width: 95%;
     }
 }
 
@@ -279,6 +281,9 @@ align-items: center;
 .container-pokedex .characters-pokedex form .search-poke{
     width: 100%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
 
 .container-pokedex .characters-pokedex form .search-poke input{
